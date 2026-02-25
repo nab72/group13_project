@@ -1,2 +1,1 @@
-changes.log("bleh");
-changes.log("from app");
+changes.log("Conflict created");
