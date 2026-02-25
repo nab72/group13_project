@@ -1,1 +1,2 @@
 changes.log("bleh");
+changes.log("from app");
