@@ -8,7 +8,7 @@ class AEBControllerNode(Node):
     def __init__(self):
         super().__init__('aeb_controller')
 
-        # Constants and PID parameters
+        # Constants and PI
         self.max_throttle = 100.0
         self.max_brake = 100.0
         self.emergency_brake_ttc = 1.0
@@ -20,7 +20,7 @@ class AEBControllerNode(Node):
         self.kd = 20.0
         self.dt = 0.1
 
-        # PID state
+        # PID 
         self.prev_error = 0.0
         self.integral = 0.0
 
