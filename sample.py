@@ -1,7 +1,7 @@
 import random
 
 def play_game():
-    options = ["rock""paper""scissors"]
+    options = ["rock","paper","scissors"]
     
     while True:
         player = input("Enter Rock, Paper, or Scissors (or 'q' to quit): ").lower()
