@@ -1,2 +1,40 @@
-changes.log("Conflict created");
-changes.log("bleh");
+import pandas as pd
+import yfinance as yf # A common library to get financial data
+from pypfopt import EfficientFrontier, portfolio_performance
+from pypfopt import risk_models, expected_returns
+from pypfopt.plotting import plot_efficient_frontier
+import matplotlib.pyplot as plt
+
+# 1. Fetch historical stock data
+tickers = ['AAPL', 'MSFT', 'GOOGL', 'AMZN']
+# Use yf.download to get a pandas DataFrame of closing prices
+prices_df = yf.download(tickers, start="2020-01-01", end="2025-01-01")['Adj Close']
+
+# 2. Calculate expected returns (mu) and covariance matrix (S)
+# PyPortfolioOpt provides modules to help with this
+mu = expected_returns.mean_historical_return(prices_df)
+S = risk_models.sample_cov(prices_df)
+
+# 3. Create the EfficientFrontier object
+# 'weight_bounds' sets the minimum and maximum weight for any single asset (e.g., no short-selling)
+ef = EfficientFrontier(mu, S, weight_bounds=(0, 1))
+
+# 4. Find the 'Max Sharpe Ratio' portfolio (tangency portfolio)
+# This is a key point on the efficient frontier
+ef.max_sharpe()
+max_sharpe_return, max_sharpe_risk, _ = ef.portfolio_performance()
+
+# 5. Plot the efficient frontier
+fig, ax = plt.subplots(figsize=(10, 6))
+plot_efficient_frontier(ef, ax=ax, show_assets=True)
+
+# Mark the Max Sharpe Ratio portfolio
+ax.scatter(max_sharpe_risk, max_sharpe_return, marker='*', s=100, color='r', label='Max Sharpe Ratio')
+
+# Enhance the plot
+ax.set_title('Efficient Frontier with Max Sharpe Portfolio')
+ax.set_xlabel('Annualised Volatility (Risk)')
+ax.set_ylabel('Annualised Return')
+ax.legend()
+plt.tight_layout()
+plt.show()
