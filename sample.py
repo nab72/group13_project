@@ -23,5 +23,6 @@ def play_game():
             print("You win!")
         else:
             print("You lose!")
+            print("In your face")
 
 play_game()
