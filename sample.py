@@ -12,7 +12,7 @@ def play_game():
         
         if player_choice == 'q':
             break
-        if player_choice not in choices:
+        if player_choice not in choic:
             print("Invalid choice, please try again.")
             continue
             
