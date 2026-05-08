@@ -35,7 +35,7 @@ class AEBControllerNode(Node):
         self.throttle_publisher = self.create_publisher(Float32, 'throttle', 10)
         self.brake_publisher = self.create_publisher(Float32, 'brake', 10)
 
-    def callback_fused_data(self, msg):
+    
         """
         Callback to process fused data and compute control actions.
         """

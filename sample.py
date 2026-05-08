@@ -18,7 +18,6 @@ def play_game():
             
         computer_choice = random.choice(choices)
         print(f"Computer chose: {computer_choice}")
-        print("garbage val")
         
 if __name__ == "__main__":
     play_game()
