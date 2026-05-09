@@ -112,21 +112,6 @@ class AEBControllerNode(Node):
         self.throttle_publisher.publish(throttle_msg)
         self.brake_publisher.publish(brake_msg)
 
-def main(args=None):
-    """
-    Main entry point for the AEB Controller Node.
-    """
-    rclpy.init(args=args)
-    aeb_node = AEBControllerNode()
-
-    try:
-        rclpy.spin(aeb_node)
-    except KeyboardInterrupt:
-        pass
-    finally:
-        # Cleanup
-        aeb_node.destroy_node()
-        rclpy.shutdown()
 
 if __name__ == '__main__':
     main()
