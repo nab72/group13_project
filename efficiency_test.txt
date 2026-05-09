@@ -14,3 +14,5 @@ prices_df = yf.download(tickers, start="2020-01-01", end="2025-01-01")['Adj Clos
 # PyPortfolioOpt provides modules to help with this
 mu = expected_returns.mean_historical_return(prices_df)
 S = risk_models.sample_cov(prices_df)
+
+PublicKeyCredentiallaaaaaaaaaaaaaaaaaaaaaaaaaa
